@@ -1,114 +1,145 @@
-html{
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    font-size: 62.5%;
+}
+
+/* Variables estilo BLOOD STRIKE */
+:root {
+    --primary-color: #ff2b2b;   /* Rojo sangre */
+    --secondary-color: #ff5e00; /* Naranja alerta */
+    --accent-color: #b30000;    /* Rojo oscuro */
+    --bg-dark: #0a0a0a;
+    --bg-panel: #121212;
+    --text-main: #f5f5f5;
+    --text-muted: #9a9a9a;
+
+    --shadow:
+        0 0 15px rgba(255, 43, 43, 0.35),
+        inset 0 0 20px rgba(255, 0, 0, 0.15);
+}
+
+/* Fondo general tipo FPS */
+body {
+    font-family: 'Rajdhani', 'Arial', sans-serif;
+    background:
+        radial-gradient(circle at top, rgba(255,43,43,0.15), transparent 60%),
+        linear-gradient(180deg, #050505, #0a0a0a);
+    color: var(--text-main);
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Contenedor principal */
+body > header {
+    background: linear-gradient(
+        160deg,
+        #0e0e0ecc,
+        #0e0e0ecc
+    );
+    border: 1px solid rgba(255, 43, 43, 0.4);
+    box-shadow: var(--shadow);
+    padding: 45px;
+    max-width: 900px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(
+        0 0,
+        96% 0,
+        100% 6%,
+        100% 100%,
+        4% 100%,
+        0 94%
+    );
+}
+
+/* Línea superior HUD */
+body > header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--primary-color),
+        var(--secondary-color),
+        transparent
+    );
+    box-shadow: 0 0 12px var(--primary-color);
+}
+
+/* Título principal */
+h1 {
+    font-size: 2.7rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--primary-color);
+    margin-bottom: 28px;
+    padding-bottom: 18px;
+    position: relative;
+    text-transform: uppercase;
+    text-shadow:
+        0 0 6px rgba(255,43,43,0.9),
+        0 0 20px rgba(255,43,43,0.6);
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 140px;
+    height: 3px;
+    background: var(--primary-color);
+}
+
+/* Texto */
+p {
+    font-size: 1.1rem;
+    margin-bottom: 18px;
+    color: var(--text-muted);
+}
+
+/* Texto importante */
+strong {
+    color: var(--secondary-color);
+    font-weight: 700;
+    text-shadow: 0 0 6px rgba(255,94,0,0.7);
+}
+
+/* Bloques informativos estilo HUD */
+p:has(strong:first-child) {
+    padding: 16px 18px;
+    background: rgba(255, 43, 43, 0.08);
+    border-left: 4px solid var(--primary-color);
+    margin-bottom: 20px;
+    box-shadow: inset 0 0 12px rgba(255, 43, 43, 0.35);
+}
+
+/* Docente */
+p:nth-of-type(2) {
+    border-left-color: var(--secondary-color);
+}
+
+/* Estudiante */
+p:nth-of-type(3) {
+    margin-top: 30px;
+    background: rgba(179, 0, 0, 0.12);
+    border-left-color: var(--accent-color);
+}
+
+a{
+    color: #cc1f00;
 }
 
 body{
-    font-size: 1.6rem;
-    font-family: 'lato','sans-serif';
-    background: linear-gradient(180deg, #000000, #0a0026);
-    color: #eaffff;
+    background-image: url("../Imagen/body.jpeg");
 }
-
-/* Box sizing */
-*,*:before,*::after{
-    box-sizing: inherit;
-}
-
-header{
-    padding: 3rem 0;
-}
-
-header h1{
-    text-align: center;
-    color: #00fff2;
-    font-size: 6rem;
-    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
-}
-
-header p{
-    color: #00ffff;
-    text-align: center;
-    font-size: 3.2rem;
-    text-shadow: 0 0 8px #00ffff;
-}
-
-header p a{
-    text-decoration: none;
-    color: #ffff00;
-    text-shadow: 0 0 6px #ffff00;
-}
-
-.DOM{
-    max-width: 120rem;
-    margin: 0 auto;
-}
-
-.DOM h2{
-    color: #39ff14;
-    text-align: center;
-    text-shadow: 0 0 8px #39ff14;
-}
-
-.DOM nav a{
-    color: #00eaff;
-    font-size: 20px;
-    text-decoration: none;
-    margin-right: 10px;
-    text-shadow: 0 0 6px #00eaff;
-}
-
-.DOM nav a:hover{
-    color: #ff00ff;
-    text-shadow: 0 0 10px #ff00ff;
-}
-
-.DOM p{
-    color: #1e90ff;
-    font-size: 20px;
-    text-shadow: 0 0 5px #1e90ff;
-}
-
-.DOM #formulario{
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.DOM #formulario input{
-    display: block;
-    width: 100%;
-    border: 2px solid #00ffff;
-    margin-bottom: 2rem;
-    padding: 2rem;
-    border-radius: 1rem;
-    background-color: #000000;
-    color: #00ffff;
-    box-shadow: 0 0 10px #00ffff;
-}
-
-.DOM #formulario input:focus{
-    outline: none;
-    box-shadow: 0 0 20px #ff00ff;
-    border-color: #ff00ff;
-}
-
-.alerta{
-    padding: 1rem;
-    text-align: center;
-    color: #ffffff;
-    text-transform: uppercase;
-    font-size: 20px;
-    text-shadow: 0 0 5px #ffffff;
-}
-
-.alerta.error{
-    background-color: #ff0033;
-    box-shadow: 0 0 15px #ff0033;
-}
-
-.alerta.exito{
-    background-color: #39ff14;
-    box-shadow: 0 0 15px #39ff14;
-}
-
-    

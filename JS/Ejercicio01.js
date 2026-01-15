@@ -1,81 +1,76 @@
-// Comentario de una sola linea
+// Comentario de una sola línea
 
 /*  Comentarios
     ...
-    Nultilinea
-*/ 
+    Multilinea
+*/
 
-// Ejercicio01: Declaracion de variables en JavaScript
-// 1. Utilizando la palabra reservada VAR 
+// Ejercicio01: Declaración de variables en JavaScript
+// 1. Utilizando la palabra reservada VAR
 
-// Utilizaremos el metodo WARN para estilizar las respuestas de las pruebas realizadas a nuestro codigo, y facilitar su revision.
+// Utilizaremos el método WARN para estilizar las respuestas
+console.warn("-- Declaración de variables utilizando el prefijo VAR --");
 
-console.warn("-- Declaracion de variables utilizando el prefijo VAR --");
-
-var miNombre = "Fernando"
-console.log("El valor almacenado en la variable miNombre es: ", miNombre);
+var miNombre = "Fernando";
+console.log("El valor almacenado en la variable miNombre es:", miNombre);
 
 // Modificar el valor de la variable
-var miNombre = "Fernando Miguel"
-console.log("El nuevo valor de la variable miNombre es: ", miNombre);
+miNombre = "Fernando Miguel";
+console.log("El nuevo valor de la variable miNombre es:", miNombre);
 
-var misApellidos;
-console.log("El valor almacenado en la variable misApellidos es: ", misApellidos); // undefined
+var misApellidos = "Pérez";
+console.log("El valor almacenado en la variable misApellidos es:", misApellidos);
 
-// Una variable puede cambiar su valor durante la ejecuavion del programa
+// Una variable puede cambiar su valor durante la ejecución del programa
+console.warn("-- Declaración de variables utilizando el prefijo CONST --");
 
-console.warn("-- Declaracion de variables utilizando el prefijo CONST --");
-// Una constante a diferencia de una variable es que su valor no cambiara durante toda la ejecuacion del programa, y al momento de ser declarada esta debera de inicializadacobligatoriamente.
-
+// Una constante no puede cambiar su valor
 const miMatricula = "240161";
-console.log("El valor de la constante miMatricula es: ", miMatricula);
+console.log("El valor de la constante miMatricula es:", miMatricula);
 
-// Intentando modificar el valor de la constante
-/*miMatricula = "25XXXX";*/
-console.log("El valor de la constante miMatricula es: ", miMatricula);
+// Intentando modificar el valor de la constante (NO permitido)
+// miMatricula = "25XXXX";
+
+console.log("El valor de la constante miMatricula es:", miMatricula);
 
 // 3. Utilizando la palabra reservada LET
-// LET es el prefijo utilizado muy similar a VAR con la diferencia en su alcance (SCOPE), aquellas declaradas con VAR tienen un alcance global en el codigo no importando bloques o secciones, mientras que las variables declaradas con let solo existiran dentro del bloque o funcion
+// LET tiene alcance de bloque (scope)
 
 var fechaNacimiento = new Date("2006-06-01");
 var miEdad = calcularEdad(fechaNacimiento);
-console.log("tu edad es de: ", miEdad, " años.")
+console.log("Tu edad es de:", miEdad, "años.");
 
-//Verificamos si es mayor de edad
-if(miEdad >=18){
-    var esMayorDeEdad = true
-    let esMenorDeEedad = false;
+// Verificamos si es mayor de edad
+var esMayorDeEdad = false;
+
+if (miEdad >= 18) {
+    esMayorDeEdad = true;
+    let esMenorDeEdad = false;
 }
 
-if(esMayorDeEdad)
-console.log("Eres mayor de Edad.");
+if (esMayorDeEdad)
+    console.log("Eres mayor de edad.");
 else
-console.log("Eres menor de Edad.");
+    console.log("Eres menor de edad.");
 
-function calcularEdad(fechaNacimiento)
-{
-    // Para calcular la edad requerimos de la fecha del dia de hoy
-    var fechahoy = new Date();
+function calcularEdad(fechaNacimiento) {
+    // Fecha actual
+    var fechaHoy = new Date();
 
-    // Dado que los datos de fecha son almacenados en milisegundos por default en JavaScript, necesitamos una variable que mos permite saber el numero de milisegundos por dia.
+    // Milisegundos por día
+    let milisegundosPorDia = 24 * 60 * 60 * 1000;
 
-    let milisegundosPorDia = 24*60*60*1000;
+    // Días vividos
+    let diasVividos = (fechaHoy - fechaNacimiento) / milisegundosPorDia;
 
-    // Ya que tenemos los milisegundos por dia tenemos que restar a la fecha de hoy, la fecha en que nacimos para calcular los milisegundos que emos vivido.
-    let diasVividos = (hoy - fechaNacimiento)/milisegundosPorDia;
-
-    // Invocamos el metodo matematico de la funcion 
-    var edad = diasVividos/365.25
+    // Cálculo de la edad
+    var edad = diasVividos / 365.25;
     edad = Math.floor(edad);
 
     return edad;
 }
 
+// Interpolación de datos (Template Strings)
+console.log(`Hola, ${miNombre} ${misApellidos}, actualmente tienes ${miEdad} años.`);
 
-// Interpolacion de datos
-
-// $ () `
-
-console.log(`Hola, $(miNombre) $(misApellidos) actualmente tienes $(miEdad) años.`);
-
-// Autor: Fernando Miguel Perez.
+// Autor: Fernando Miguel Pérez.
